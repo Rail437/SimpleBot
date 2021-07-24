@@ -40,13 +40,26 @@ public class User {
         this.ID = ID;
     }
 
-    public void setCASH(int CASH) {
-        this.CASH = CASH;
+    public boolean minusCASH(int i){
+        int buff = this.CASH;
+        if((this.CASH - i) < 0){
+            this.CASH = buff;
+            return false;
+        }else {
+            this.CASH -= i;
+        }
+        return true;
     }
+
+
 
     public void setStatusActiv(boolean statusActiv) {
         this.statusActiv = statusActiv;
     }
 
     public void setStage(int stage) { this.stage = stage; }
+
+    public void plusCASH(int i) {
+        this.CASH += i;
+    }
 }
