@@ -6,8 +6,8 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
 import java.util.*;
 public class Bot extends TelegramLongPollingBot {
-    private static final String TOKEN = "-";
-    private static final String USER_NAME = "-";
+    private static final String TOKEN = "1844671453:AAFb3XLn8vgitF8OSulc3prDsdEsWxKwg6E";
+    private static final String USER_NAME = "Test3000";
 
     int element;
     boolean start = false;
@@ -66,6 +66,8 @@ public class Bot extends TelegramLongPollingBot {
             stoneCommand(chatId, 3);
         } else if (users.get(chatId).getStage() == 0 && text.contains("аланс")) {
             checkMyCash(chatId);
+        } else if (users.get(chatId).getStage() == 0 && text.contains("sers")) {
+            checkUsers();
         } else if ((users.get(chatId).getStage() == 2 || users.get(chatId).getStage() == 3)
                 && text.contains("тмена")) {
             users.get(chatId).setStage(2);
@@ -100,6 +102,20 @@ public class Bot extends TelegramLongPollingBot {
         }catch (TelegramApiException e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * Удалить потом список поименно.
+     */
+    private void checkUsers() throws TelegramApiException {
+        List<String> usersList = new ArrayList<>();
+        for (Map.Entry<Long, User> entry : users.entrySet()) {
+             usersList.add(entry.getValue().getName());
+        }
+
+        String txt = "Сейчас в боте " + users.size() + " участников онлайн. " +
+                "\n" + usersList;
+        execute(new SendMessage(chatId, txt).setReplyMarkup(keyboard.keyboard).setText(keyboard.getKeyboardCash(txt)));
     }
 
     private boolean checkNumber(String text) {

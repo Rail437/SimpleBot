@@ -7,14 +7,15 @@ import java.util.List;
 public class Keyboard {
     ReplyKeyboardMarkup keyboard = new ReplyKeyboardMarkup();
 
+    KeyboardRow keyboardFirstRow = new KeyboardRow();
+    KeyboardRow keyboardSecondRow = new KeyboardRow();
+    KeyboardRow keyboardThreeRow = new KeyboardRow();
+
     public Keyboard() {
-        this.keyboard = keyboard;
     }
 
     public String getKeyboard(String msg){
         List<KeyboardRow> keys = new ArrayList<>();
-        KeyboardRow keyboardFirstRow = new KeyboardRow();
-        KeyboardRow keyboardSecondRow = new KeyboardRow();
 
         keyboard.setSelective(true);
         keyboard.setResizeKeyboard(true);
@@ -42,16 +43,17 @@ public class Keyboard {
         }
         if(msg.equals("Противник сделал свой ход.\nТеперь ваш ход!")
                 || msg.equals("Вы ходите первым.")){
-            // || msg.equals("/камень") ||
-            //msg.equals("/ножницы") || msg.equals("/бумага") ||
             keyboardFirstRow.clear();
             keyboardSecondRow.clear();
+            keyboardThreeRow.clear();
             keyboardFirstRow.add("/камень");
             keyboardFirstRow.add("/ножницы");
             keyboardSecondRow.add("/бумага");
             keyboardSecondRow.add("/новая игра");
+            keyboardThreeRow.add("/баланс");
             keys.add(keyboardFirstRow);
             keys.add(keyboardSecondRow);
+            keys.add(keyboardThreeRow);
             keyboard.setKeyboard(keys);
         }
         return msg;
@@ -59,8 +61,6 @@ public class Keyboard {
 
     public String getKeyboardCash(String msg){
         List<KeyboardRow> keys = new ArrayList<>();
-        KeyboardRow keyboardFirstRow = new KeyboardRow();
-        KeyboardRow keyboardSecondRow = new KeyboardRow();
 
         keyboard.setSelective(true);
         keyboard.setResizeKeyboard(true);
@@ -69,12 +69,16 @@ public class Keyboard {
         if (msg.contains("аланс") || msg.contains("счете")){
             keyboardFirstRow.clear();
             keyboardSecondRow.clear();
+            keyboardThreeRow.clear();
             keyboardFirstRow.add("/новая игра");
             keyboardFirstRow.add("/Баланс");
             keyboardSecondRow.add("/Пополнить");
             keyboardSecondRow.add("/Вывести");
+            keyboardThreeRow.add("100");
+            keyboardThreeRow.add("/Отмена");
             keys.add(keyboardFirstRow);
             keys.add(keyboardSecondRow);
+            keys.add(keyboardThreeRow);
             keyboard.setKeyboard(keys);
         }
         return msg;
