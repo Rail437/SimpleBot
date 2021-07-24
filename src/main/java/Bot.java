@@ -6,8 +6,8 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
 import java.util.*;
 public class Bot extends TelegramLongPollingBot {
-    private static final String TOKEN = "1844671453:AAFb3XLn8vgitF8OSulc3prDsdEsWxKwg6E";
-    private static final String USER_NAME = "Test3000";
+    private static final String TOKEN = "-";
+    private static final String USER_NAME = "-";
 
     int element;
     boolean start = false;
