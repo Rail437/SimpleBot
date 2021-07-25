@@ -33,6 +33,18 @@ public class Keyboard {
             keys.add(keyboardSecondRow);
             keyboard.setKeyboard(keys);
         }
+        if (msg.chars().allMatch(Character :: isDigit) || msg.contains("для начала игры")){
+            keyboardFirstRow.clear();
+            keyboardSecondRow.clear();
+            keyboardFirstRow.add("/новая игра");
+            keyboardFirstRow.add("/мой баланс");
+            keyboardSecondRow.add("10");
+            keyboardSecondRow.add("50");
+            keyboardSecondRow.add("100");
+            keys.add(keyboardFirstRow);
+            keys.add(keyboardSecondRow);
+            keyboard.setKeyboard(keys);
+        }
         if (msg.contains("нет") || msg.equals("Нет")){
             keyboardFirstRow.clear();
             keyboardSecondRow.clear();
