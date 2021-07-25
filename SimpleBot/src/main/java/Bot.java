@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Random;
 
 public class Bot extends TelegramLongPollingBot {
-    private static final String TOKEN = "1844671453:AAFb3XLn8vgitF8OSulc3prDsdEsWxKwg6E";
+    private static final String TOKEN = "";
     private static final String USER_NAME = "Test3000";
 
     int element;
