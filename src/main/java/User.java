@@ -5,6 +5,7 @@ public class User {
     private String name;
     private int stage = 0;
     private int element = 0;
+    private int bet = 0;
 
     private boolean statusActiv = false;
 
@@ -32,13 +33,15 @@ public class User {
 
     public int getElement() { return element; }
 
-    public void setElement(int element) { this.element = element;}
-
-    public void setName(String name) { this.name = name; }
-
-    public void setID(long ID) {
-        this.ID = ID;
+    public int getBet() {
+        return bet;
     }
+
+    public void setBet(int bet) {
+        this.bet = bet;
+    }
+
+    public void setElement(int element) { this.element = element;}
 
     public boolean minusCASH(int i){
         int buff = this.CASH;
@@ -49,12 +52,6 @@ public class User {
             this.CASH -= i;
         }
         return true;
-    }
-
-
-
-    public void setStatusActiv(boolean statusActiv) {
-        this.statusActiv = statusActiv;
     }
 
     public void setStage(int stage) { this.stage = stage; }
