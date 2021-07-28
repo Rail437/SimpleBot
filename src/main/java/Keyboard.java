@@ -14,7 +14,7 @@ public class Keyboard {
     public Keyboard() {
     }
 
-    public String getKeyboard(String msg){
+    public synchronized String getKeyboard(String msg){
         List<KeyboardRow> keys = new ArrayList<>();
 
         keyboard.setSelective(true);
@@ -26,7 +26,6 @@ public class Keyboard {
                 || msg.contains("для начала игры")){
             keyboardFirstRow.clear();
             keyboardSecondRow.clear();
-            keyboardFirstRow.add("/start");
             keyboardFirstRow.add("/новая игра");
             keyboardSecondRow.add("/мой баланс");
             keys.add(keyboardFirstRow);
@@ -53,8 +52,26 @@ public class Keyboard {
             keys.add(keyboardFirstRow);
             keyboard.setKeyboard(keys);
         }
-        if(msg.equals("Противник сделал свой ход.\nТеперь ваш ход!")
-                || msg.equals("Вы ходите первым.")){
+        if (msg.contains("режим") || msg.equals("выберите")){
+            keyboardFirstRow.clear();
+            keyboardSecondRow.clear();
+            keyboardFirstRow.add("/против бота");
+            keyboardSecondRow.add("/против соперника");
+            keys.add(keyboardFirstRow);
+            keys.add(keyboardSecondRow);
+            keyboard.setKeyboard(keys);
+        }
+        if (msg.contains("приглашает") || msg.contains("пришлите в ответ")){
+            keyboardFirstRow.clear();
+            keyboardSecondRow.clear();
+            keyboardFirstRow.add("Да");
+            keyboardFirstRow.add("Нет");
+            keys.add(keyboardFirstRow);
+            keyboard.setKeyboard(keys);
+        }
+        if(msg.contains("еперь ваш ход!")
+                || msg.equals("Противник сделал свой ход.\nТеперь ваш ход!")
+                || msg.contains("ходите первым")){
             keyboardFirstRow.clear();
             keyboardSecondRow.clear();
             keyboardThreeRow.clear();
@@ -68,10 +85,25 @@ public class Keyboard {
             keys.add(keyboardThreeRow);
             keyboard.setKeyboard(keys);
         }
+        if (msg.contains("аланс") || msg.contains("счете")){
+            keyboardFirstRow.clear();
+            keyboardSecondRow.clear();
+            keyboardThreeRow.clear();
+            keyboardFirstRow.add("/новая игра");
+            keyboardFirstRow.add("/Баланс");
+            keyboardSecondRow.add("/Пополнить");
+            keyboardSecondRow.add("/Вывести");
+            keyboardThreeRow.add("100");
+            keyboardThreeRow.add("/Отмена");
+            keys.add(keyboardFirstRow);
+            keys.add(keyboardSecondRow);
+            keys.add(keyboardThreeRow);
+            keyboard.setKeyboard(keys);
+        }
         return msg;
     }
 
-    public String getKeyboardCash(String msg){
+    public synchronized String getKeyboardCash(String msg){
         List<KeyboardRow> keys = new ArrayList<>();
 
         keyboard.setSelective(true);
