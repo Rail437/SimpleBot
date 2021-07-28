@@ -6,6 +6,8 @@ public class User {
     private int stage = 0;
     private int element = 0;
     private int bet = 0;
+    private long opponent = 0;
+    private boolean first = false;
 
     private boolean statusActiv = false;
 
@@ -58,5 +60,28 @@ public class User {
 
     public void plusCASH(int i) {
         this.CASH += i;
+    }
+
+    public boolean checkName(String txt){
+        if(this.name.equals(txt)){
+         return true;
+        }
+        return false;
+    }
+
+    public long getOpponent() {
+        return opponent;
+    }
+
+    public void setOpponent(long opponent) {
+        this.opponent = opponent;
+    }
+
+    public boolean isFirst() {
+        return first;
+    }
+
+    public void setFirst(boolean first) {
+        this.first = first;
     }
 }
